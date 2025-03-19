@@ -1,7 +1,7 @@
 .search-container {
   margin-top: 2vh;
   padding: 1rem;
-  background-color: var(--color-card-content);
+
   border-radius: 4px;
 }
 
@@ -17,9 +17,13 @@
 
 .search-container .btn {
   background-color: var(--color-primary);
+  color: #2a444d;
+  font-weight: bold;
   margin-top: 1rem;
 }
 
 .search-container .btn:hover {
+  transition: 1s;
   background-color: #2a444d;
+  color: var(--color-font);
 }

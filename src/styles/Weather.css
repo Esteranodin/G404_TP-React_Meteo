@@ -18,3 +18,11 @@
     text-shadow: -1px 0 var(--color-primary), 0 1px var(--color-primary), 1px 0 var(--color-primary), 0 -1px var(--color-primary);
 }
 
+.error-message {
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: rgba(255, 107, 107, 0.1);
+    border-radius: 4px;
+  }

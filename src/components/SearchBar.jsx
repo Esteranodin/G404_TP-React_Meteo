@@ -20,10 +20,9 @@ function SearchBar({ onCityChange }) {
             value={inputCity}
             onChange={(e) => setInputCity(e.target.value)}
             placeholder="Entrez une ville..."
-            className="white-text"
           />
         </div>
-        <button className="btn waves-effect waves-light" type="submit">
+        <button className="btn" type="submit">
           Rechercher
         </button>
       </form>

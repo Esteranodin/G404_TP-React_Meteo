@@ -8,7 +8,6 @@ function Days() {
   return (
     <div>
         <a style= {divStyle} href="#">Thursday</a>
-
     </div>
   )
 }
