@@ -1,0 +1,17 @@
+:root {
+  --color-bg-main: #202629;
+  --color-bg-header: #282c34;
+  --color-bg-card: rgb(144, 144, 197);
+  --color-card-content: #0b0829;
+  --color-card-action: #120944;
+  --color-primary: #61dafb;
+  --color-font: rgb(246, 232, 232);
+
+  --shadow-card : -1px 0px var(--color-primary), 0px 1px var(--color-primary), 1px 0px var(--color-primary), 0px -1px var(--color-primary);
+              
+  
+}
+
+body {
+  background: var(--color-bg-main);
+}

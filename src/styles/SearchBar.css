@@ -1,0 +1,25 @@
+.search-container {
+  margin-top: 2vh;
+  padding: 1rem;
+  background-color: var(--color-card-content);
+  border-radius: 4px;
+}
+
+.search-container input {
+  color: var(--color-font);
+  border-bottom: 1px solid var(--color-primary) !important;
+  box-shadow: 0 1px 0 0 var(--color-primary) !important;
+}
+
+.search-container input::placeholder {
+  color: var(--color-font);
+}
+
+.search-container .btn {
+  background-color: var(--color-primary);
+  margin-top: 1rem;
+}
+
+.search-container .btn:hover {
+  background-color: #2a444d;
+}

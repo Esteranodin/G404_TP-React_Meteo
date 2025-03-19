@@ -3,16 +3,18 @@
 }
 
 .weather.card .card-content {
-    background: #0b0829;
+    background: var(--color-card-content);
+    color: var(--color-font);
 }
 
 .weather.card .card-action {
-    background: #120944;
+    background: var(--color-card-action);
 }
 
 .weather .temperature {
     margin-left:4vh;
     font-size:120px;
     font-family: 'Roboto', sans-serif;
-    text-shadow: -1px 0 #61dafb, 0 1px #61dafb, 1px 0 #61dafb, 0 -1px #61dafb;
+    text-shadow: -1px 0 var(--color-primary), 0 1px var(--color-primary), 1px 0 var(--color-primary), 0 -1px var(--color-primary);
 }
+

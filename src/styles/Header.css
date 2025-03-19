@@ -1,0 +1,15 @@
+.header {
+    background-color: var(--color-bg-header);
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: var(--color-font);
+  }
+
+  .logo {
+    height: 100px;
+    pointer-events: none;
+  }
