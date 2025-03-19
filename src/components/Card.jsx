@@ -15,7 +15,7 @@ function Card() {
       <div className='col s12 m6 push-m3'>
         <SearchBar onCityChange={handleCityChange} />
         <Weather city={city} />
-        <Days />
+        <Days city={city} />
       </div>
     </div>
   )

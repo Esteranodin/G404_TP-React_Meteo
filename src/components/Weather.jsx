@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Weather.css';
 import { useWeather } from '../hooks/useWeather';
+import { translateWeatherCondition } from '../utils/weatherTranslations';
 
 function Weather({ city }) {
   const { weatherData, loading, error } = useWeather(city);
@@ -14,7 +15,7 @@ function Weather({ city }) {
         {weatherData && (
           <div>
             <p className="card-title">{weatherData.location.name}</p>
-            <p>{weatherData.current.condition.text}</p>
+            <p>{translateWeatherCondition(weatherData.current.condition.text)}</p>
             <p><img src={`https:${weatherData.current.condition.icon}`} alt="Weather icon"></img></p>
             <p className="temperature">{weatherData.current.temp_c}°C</p>
             <p className="wind">Vent {weatherData.current.wind_kph}km/h</p>
