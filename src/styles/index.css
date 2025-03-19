@@ -1,14 +1,18 @@
 :root {
   --color-bg-main: #202629;
   --color-bg-header: #282c34;
-  --color-bg-card: rgb(144, 144, 197);
+  --color-bg-today: rgba(61, 203, 146, 0.073);
   --color-card-content: #0b0829;
   --color-card-action: #120944;
   --color-primary: #61dafb;
   --color-font: rgb(246, 232, 232);
+  --color-font-error: #ff6b6b;;
+  --color-temp-max: #d41b1b;
+  --color-temp-min: #0e73d8;
 
   --shadow-card : -1px 0px var(--color-primary), 0px 1px var(--color-primary), 1px 0px var(--color-primary), 0px -1px var(--color-primary);
-              
+  --shadow-day-card: 0 2px 5px rgba(0,0,0,0.1);
+  --shadow-today-card: 0 4px 8px rgba(0, 0, 0, 0.15);           
   
 }
 

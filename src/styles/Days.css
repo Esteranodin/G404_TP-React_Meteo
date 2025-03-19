@@ -11,10 +11,10 @@
   flex-direction: column;
   align-items: center;
   padding: 12px;
-  background-color: #f5f5f5;
+  background-color: var(--color-font);
   border-radius: 8px;
   width: calc(20% - 10px);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-day-card);
   min-width: 100px;
   transition: transform 0.2s ease;
 }
@@ -43,27 +43,27 @@
 }
 
 .temp-max {
-  font-weight: bold;
-  color: #d32f2f;
+  font-weight:600;
+  color: var(--color-temp-max);
 }
 
 .temp-min {
-  color: #1976d2;
+  font-weight:500;
+  color: var(--color-temp-min);
 }
 
-
 .day-card.today {
-  background-color: rgba(66, 165, 245, 0.1);
-  border: 1px solid rgba(66, 165, 245, 0.5);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background-color: var(--color-bg-today);
+  border: 1px solid var(--color-primary);
+  box-shadow: var(--shadow-today-card);
 }
 
 .day-card.today .day-name {
-  color: #1976d2;
+  color: var(--color-primary);
   font-weight: 700;
 }
 
-/* Responsive adjustments */
+/* -------------- Responsive -------------- */
 @media (max-width: 768px) {
   .day-card {
     width: calc(33.33% - 10px);

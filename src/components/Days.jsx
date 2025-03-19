@@ -1,21 +1,10 @@
 import React from 'react';
 import { useWeather } from '../hooks/useWeather';
 import '../styles/Days.css';
+import { getDayOfWeek } from '../utils/dateUtils';
 
-function Days({ city }) {
+function Days({ city, onDaySelect }) {
   const { weatherData, loading, error } = useWeather(city);
-  
-  // date en jour de la semaine et si aujourd'hui
-  const getDayOfWeek = (dateStr) => {
-    const today = new Date();
-    const date = new Date(dateStr);
-
-    if (date.toDateString() === today.toDateString()) {
-      return "Aujourd'hui";
-    }
-
-    return date.toLocaleDateString('fr-FR', { weekday: 'long' });
-  };
 
   if (loading || !weatherData || error) {
     return (
@@ -31,20 +20,22 @@ function Days({ city }) {
     <div className="days-container">
       {forecastDays.map((day) => {
         const isToday = new Date(day.date).toDateString() === new Date().toDateString();
-        
+
         return (
-          <div 
-            key={day.date} 
+          <div
+            key={day.date}
             className={`day-card ${isToday ? 'today' : ''}`}
+            onClick={() => onDaySelect && onDaySelect(day)}
+            style={{ cursor: 'pointer' }}
           >
             <div className="day-name">{getDayOfWeek(day.date)}</div>
-            
-            <img 
+
+            <img
               src={`https:${day.day.condition.icon}`}
               alt={day.day.condition.text}
               className="day-icon"
             />
-            
+
             <div className="day-temps">
               <span className="temp-max">{Math.round(day.day.maxtemp_c)}°C</span>
               <span className="temp-min">{Math.round(day.day.mintemp_c)}°C</span>

@@ -2,12 +2,13 @@ const weatherTranslations = {
   // Conditions ensoleillées
   "Sunny": "Ensoleillé",
   "Clear": "Dégagé",
-  "Partly cloudy": "Partiellement nuageux",
+  "Partly Cloudy": "Partiellement nuageux",
   "Cloudy": "Nuageux",
   "Overcast": "Couvert",
   
   // Pluie
   "Patchy rain possible": "Risque de pluie éparse",
+  "Patchy rain nearby": "Pluie éparse à proximité",
   "Rain": "Pluie",
   "Light rain": "Pluie légère",
   "Moderate rain": "Pluie modérée",
