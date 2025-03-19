@@ -1,0 +1,18 @@
+.weather.card {
+    margin-top:4vh;
+}
+
+.weather.card .card-content {
+    background: #0b0829;
+}
+
+.weather.card .card-action {
+    background: #120944;
+}
+
+.weather .temperature {
+    margin-left:4vh;
+    font-size:120px;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: -1px 0 #61dafb, 0 1px #61dafb, 1px 0 #61dafb, 0 -1px #61dafb;
+}

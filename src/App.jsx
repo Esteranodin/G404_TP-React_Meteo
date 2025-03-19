@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import './App.css'
+import './styles/App.css'
 
 function App() {
 
 
   return (
-    <p></p>
+    <p className='App'>fdgfdgfd</p>
   )
 }
 
