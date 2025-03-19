@@ -7,3 +7,7 @@ export const getDayOfWeek = (dateStr) => {
   }
   return date.toLocaleDateString('fr-FR', { weekday: 'long' });
 };
+
+export const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};

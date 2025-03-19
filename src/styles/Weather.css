@@ -15,7 +15,7 @@
     margin-left:4vh;
     font-size:120px;
     font-family: 'Roboto', sans-serif;
-    text-shadow: -1px 0 var(--color-primary), 0 1px var(--color-primary), 1px 0 var(--color-primary), 0 -1px var(--color-primary);
+    text-shadow: var(--shadow-text);
 }
 
 .error-message {

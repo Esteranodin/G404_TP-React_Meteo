@@ -1,7 +1,7 @@
 import React from 'react';
 import { useWeather } from '../hooks/useWeather';
 import '../styles/Days.css';
-import { getDayOfWeek } from '../utils/dateUtils';
+import { getDayOfWeek } from '../utils/date';
 
 function Days({ city, onDaySelect }) {
   const { weatherData, loading, error } = useWeather(city);

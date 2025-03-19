@@ -10,7 +10,7 @@
   --color-temp-max: #d41b1b;
   --color-temp-min: #0e73d8;
 
-  --shadow-card : -1px 0px var(--color-primary), 0px 1px var(--color-primary), 1px 0px var(--color-primary), 0px -1px var(--color-primary);
+  --shadow-text : -1px 0px var(--color-primary), 0px 1px var(--color-primary), 1px 0px var(--color-primary), 0px -1px var(--color-primary);
   --shadow-day-card: 0 2px 5px rgba(0,0,0,0.1);
   --shadow-today-card: 0 4px 8px rgba(0, 0, 0, 0.15);           
   
