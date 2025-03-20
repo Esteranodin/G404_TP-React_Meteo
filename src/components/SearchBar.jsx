@@ -1,32 +1,51 @@
 import { useState } from 'react';
 import { getCurrentPosition } from '../utils/geolocation';
+import { validateCity, getGeolocationErrorMessage } from '../utils/errorHandler';
+import ErrorMessage from './ErrorMessage';
 import '../styles/SearchBar.css';
 
 function SearchBar({ onCityChange, onCoordinatesChange }) {
   const [inputCity, setInputCity] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [locationError, setLocationError] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputCity.trim()) {
-      onCityChange(inputCity);
-      onCoordinatesChange(null);
+    
+    // Validation du nom de la ville
+    const validationError = validateCity(inputCity);
+    if (validationError) {
+      setError(validationError);
+      return;
     }
+    
+    // Si tout est valide, effacer les erreurs
+    setError(null);
+    
+    onCityChange(inputCity.trim());
+    // Réinitialiser les coordonnées si on cherche par ville
+    onCoordinatesChange(null);
   };
 
   const handleLocationRequest = async () => {
     try {
       setIsLoading(true);
-      setLocationError(null);
+      setError(null);
       const coords = await getCurrentPosition();
       onCoordinatesChange(coords);
+      // Réinitialiser la ville si on utilise les coordonnées
       onCityChange(null);
     } catch (error) {
-      setLocationError(error);
+      setError(getGeolocationErrorMessage(error));
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleInputChange = (e) => {
+    setInputCity(e.target.value);
+    // Effacer les erreurs dès que l'utilisateur commence à taper
+    if (error) setError(null);
   };
 
   return (
@@ -36,7 +55,7 @@ function SearchBar({ onCityChange, onCoordinatesChange }) {
           <input 
             type="text" 
             value={inputCity} 
-            onChange={(e) => setInputCity(e.target.value)}
+            onChange={handleInputChange}
             placeholder="Entrez une ville"
           />
           <button type="submit" className="btn">Rechercher</button>
@@ -53,9 +72,7 @@ function SearchBar({ onCityChange, onCoordinatesChange }) {
         </button>
       </div>
       
-      {locationError && (
-        <div className="error-message red-text">{locationError}</div>
-      )}
+      <ErrorMessage error={error} />
     </div>
   );
 }

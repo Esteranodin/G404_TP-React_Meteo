@@ -42,9 +42,9 @@ const translations = {
   "New Moon": "Nouvelle lune",
   "Waxing Crescent": "Premier croissant",
   "First Quarter": "Premier quartier",
-  "Waxing Gibbous": "Gibbeuse croissante",
+  "Waxing Gibbous": "Lune gibbeuse croissante",
   "Full Moon": "Pleine lune",
-  "Waning Gibbous": "Gibbeuse décroissante",
+  "Waning Gibbous": "Lune gibbeuse décroissante",
   "Last Quarter": "Dernier quartier",
   "Waning Crescent": "Dernier croissant"
 };

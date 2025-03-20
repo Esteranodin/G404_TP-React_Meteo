@@ -1,11 +1,13 @@
 import { useWeather } from '../hooks/useWeather';
 import { getDayOfWeek } from '../utils/date';
+import { useError } from '../contexts/ErrorContext';
 import '../styles/Days.css';
 
 function Days({ city, coordinates, onDaySelect }) {
-  const { weatherData, loading, error } = useWeather(city, coordinates);
-
-  if (loading || !weatherData || error) {
+  const { weatherData, loading } = useWeather(city, coordinates);
+  const { errors } = useError();
+  const hasError = errors['weather-api']; 
+  if (loading || !weatherData || hasError) {
     return (
       <div className="days-container">
         <div className="day-card">Chargement...</div>

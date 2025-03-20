@@ -1,11 +1,14 @@
 import { useWeather } from '../hooks/useWeather';
 import { translateWeatherCondition } from '../utils/translations';
 import { getDayOfWeek, capitalizeFirstLetter } from '../utils/date';
+import { useError } from '../contexts/ErrorContext';
 import moon from '../assets/moon.svg';
 import '../styles/Weather.css';
 
 function Weather({ city, coordinates, dayData }) {
-  const { weatherData, loading, error } = useWeather(city, coordinates);
+  const { weatherData, loading } = useWeather(city, coordinates);
+  const { errors } = useError();
+  const error = errors['weather-api'];
 
   if (loading) return <div className='error-message'>Chargement des données météo...</div>;
   if (error) return <div className='error-message'>{error}</div>;

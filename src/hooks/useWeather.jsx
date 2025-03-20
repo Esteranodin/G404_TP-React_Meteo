@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { getWeatherApiErrorMessage } from '../utils/errorHandler';
+import { useError } from '../contexts/ErrorContext';
 
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 const cache = {};
@@ -7,11 +9,20 @@ const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes en millisecondes
 export function useWeather(city, coordinates) {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [localError, setLocalError] = useState(null); 
+ 
+  const errorContext = useError();
+  const errorSource = 'weather-api';
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Effacer les erreurs locales et globales
+        setLocalError(null);
+        if (errorContext && errorContext.clearError) {
+          errorContext.clearError(errorSource);
+        }
+        
         setLoading(true);
         
         // Construction paramètre de requête (ville ou coordonnées)
@@ -96,10 +107,18 @@ export function useWeather(city, coordinates) {
         // console.log(formattedWeatherData);
                 
         setWeatherData(formattedWeatherData);
-        setLoading(false);
       } catch (error) {
         console.error('Error fetching weather data:', error);
-        setError(error.message);
+        const errorMessage = getWeatherApiErrorMessage(error);
+        
+        // Stocker l'erreur localement
+        setLocalError(errorMessage);
+        
+        // Et aussi dans le contexte global si disponible
+        if (errorContext && errorContext.setError) {
+          errorContext.setError(errorSource, errorMessage);
+        }
+      } finally {
         setLoading(false);
       }
     };
@@ -107,5 +126,6 @@ export function useWeather(city, coordinates) {
     fetchData();
   }, [city, coordinates]);
 
-  return { weatherData, loading, error };
+  // Retourner l'erreur locale avec les autres données
+  return { weatherData, loading, error: localError };
 }
