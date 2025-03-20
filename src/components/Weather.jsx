@@ -50,7 +50,7 @@ function Weather({ city, coordinates, dayData }) {
           <p>{translateWeatherCondition(displayData.condition)}</p>
           <p><img src={`https:${displayData.icon}`} alt="Weather icon" /></p>
           <p className="temperature">{displayData.temperature}°C</p>
-          <p className="wind">Vent maximum à {displayData.wind}km/h</p>
+          <p>Vent maximum à {displayData.wind}km/h</p>
           <p>Probabilité de pluie : {displayData.rain}%</p>
           <p>Il pleuvra environ {displayData.precipitation} mm</p>
         </div>

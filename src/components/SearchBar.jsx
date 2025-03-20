@@ -62,7 +62,7 @@ function SearchBar({ onCityChange, onCoordinatesChange }) {
         </div>
       </form>
       
-      <div className="geolocation-container">
+      <div>
         <button 
           onClick={handleLocationRequest} 
           disabled={isLoading}
