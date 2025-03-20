@@ -1,11 +1,11 @@
 import { useWeather } from '../hooks/useWeather';
-import { translateWeatherCondition } from '../utils/weatherTranslations';
+import { translateWeatherCondition } from '../utils/translations';
 import { getDayOfWeek, capitalizeFirstLetter } from '../utils/date';
 import moon from '../assets/moon.svg';
 import '../styles/Weather.css';
 
-function Weather({ city, dayData }) {
-  const { weatherData, loading, error } = useWeather(city);
+function Weather({ city, coordinates, dayData }) {
+  const { weatherData, loading, error } = useWeather(city, coordinates);
 
   if (loading) return <div className='error-message'>Chargement des données météo...</div>;
   if (error) return <div className='error-message'>{error}</div>;
@@ -42,7 +42,7 @@ function Weather({ city, dayData }) {
         <div>
           <p>{capitalizeFirstLetter(displayData.day)}</p>
           <p>Le soleil se lève à {displayData.sunrise} et se couche à {displayData.sunset}</p>
-          <p>Phase de la lune <img className="icon" src={moon} alt="icone de lune"/>{displayData.moon}</p>
+          <p><img className="icon" src={moon} alt="icone de lune"/>{translateWeatherCondition(displayData.moon)}</p>
           <p className="card-title">{weatherData.location.name}</p>
           <p>{translateWeatherCondition(displayData.condition)}</p>
           <p><img src={`https:${displayData.icon}`} alt="Weather icon" /></p>

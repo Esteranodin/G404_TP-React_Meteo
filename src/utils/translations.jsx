@@ -1,4 +1,4 @@
-const weatherTranslations = {
+const translations = {
   // Conditions ensoleillées
   "Sunny": "Ensoleillé",
   "Clear": "Dégagé",
@@ -36,9 +36,19 @@ const weatherTranslations = {
   "Hail": "Grêle",
   
   // Par défaut
-  "Unknown": "Inconnu"
+  "Unknown": "Inconnu",
+
+  //Phases de la lune
+  "New Moon": "Nouvelle lune",
+  "Waxing Crescent": "Premier croissant",
+  "First Quarter": "Premier quartier",
+  "Waxing Gibbous": "Gibbeuse croissante",
+  "Full Moon": "Pleine lune",
+  "Waning Gibbous": "Gibbeuse décroissante",
+  "Last Quarter": "Dernier quartier",
+  "Waning Crescent": "Dernier croissant"
 };
 
 export const translateWeatherCondition = (englishCondition) => {
-  return weatherTranslations[englishCondition] || englishCondition;
+  return translations[englishCondition] || englishCondition;
 };

@@ -4,7 +4,7 @@ const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 const cache = {};
 const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes en millisecondes
 
-export function useWeather(city) {
+export function useWeather(city, coordinates) {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,17 +14,31 @@ export function useWeather(city) {
       try {
         setLoading(true);
         
+        // Construction paramètre de requête (ville ou coordonnées)
+        let queryParam;
+        let cacheKey;
+        
+        if (coordinates) {
+          queryParam = `${coordinates.lat},${coordinates.lon}`;
+          cacheKey = `coords_${queryParam}`;
+        } else if (city) {
+          queryParam = city;
+          cacheKey = `city_${city}`;
+        } else {
+          throw new Error('Veuillez fournir une ville ou des coordonnées');
+        }
+        
         // Vérifier si des données en cache valides existent
         const currentTime = new Date().getTime();
-        if (cache[city] && (currentTime - cache[city].timestamp < CACHE_DURATION)) {
-          setWeatherData(cache[city].data);
+        if (cache[cacheKey] && (currentTime - cache[cacheKey].timestamp < CACHE_DURATION)) {
+          setWeatherData(cache[cacheKey].data);
           setLoading(false);
           return;
         }
 
         // Sinon, faire un appel API
         const response = await fetch(
-          `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=5&aqi=no&alerts=yes`
+          `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${queryParam}&days=5&aqi=no&alerts=yes`
         );
 
         if (!response.ok) {
@@ -32,9 +46,9 @@ export function useWeather(city) {
         }
 
         const data = await response.json();
-
+        
         // Mettre en cache les données
-        cache[city] = {
+        cache[cacheKey] = {
           data,
           timestamp: currentTime
         };
@@ -91,7 +105,7 @@ export function useWeather(city) {
     };
 
     fetchData();
-  }, [city]);
+  }, [city, coordinates]);
 
   return { weatherData, loading, error };
 }

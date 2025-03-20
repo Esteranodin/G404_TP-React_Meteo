@@ -2,8 +2,8 @@ import { useWeather } from '../hooks/useWeather';
 import { getDayOfWeek } from '../utils/date';
 import '../styles/Days.css';
 
-function Days({ city, onDaySelect }) {
-  const { weatherData, loading, error } = useWeather(city);
+function Days({ city, coordinates, onDaySelect }) {
+  const { weatherData, loading, error } = useWeather(city, coordinates);
 
   if (loading || !weatherData || error) {
     return (
