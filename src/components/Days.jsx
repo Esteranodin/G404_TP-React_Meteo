@@ -7,6 +7,7 @@ function Days({ city, coordinates, onDaySelect }) {
   const { weatherData, loading } = useWeather(city, coordinates);
   const { errors } = useError();
   const hasError = errors['weather-api']; 
+  
   if (loading || !weatherData || hasError) {
     return (
       <div className="days-container">
@@ -15,7 +16,18 @@ function Days({ city, coordinates, onDaySelect }) {
     );
   }
 
-  const forecastDays = weatherData.forecast.slice(0, 5);
+  // Vérification que forecast est bien un tableau avant d'appeler slice
+  const forecastDays = Array.isArray(weatherData.forecast) 
+    ? weatherData.forecast.slice(0, 5) 
+    : [];
+
+  if (forecastDays.length === 0) {
+    return (
+      <div className="days-container">
+        <div className="day-card">Aucune prévision disponible</div>
+      </div>
+    );
+  }
 
   return (
     <div className="days-container">

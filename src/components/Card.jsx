@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Days from './Days';
 import Weather from './Weather';
 import SearchBar from './SearchBar';
@@ -8,9 +8,9 @@ function Card() {
   const [selectedDay, setSelectedDay] = useState(null);
   const [coordinates, setCoordinates] = useState(null);
 
-  const handleDaySelect = (day) => {
+  const handleDaySelect = useCallback((day) => {
     setSelectedDay(day);
-  };
+  }, []);
 
   return (
     <div className='row'>
