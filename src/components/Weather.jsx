@@ -1,8 +1,8 @@
-import React from 'react';
-import '../styles/Weather.css';
 import { useWeather } from '../hooks/useWeather';
 import { translateWeatherCondition } from '../utils/weatherTranslations';
 import { getDayOfWeek, capitalizeFirstLetter } from '../utils/date';
+import moon from '../assets/moon.svg';
+import '../styles/Weather.css';
 
 function Weather({ city, dayData }) {
   const { weatherData, loading, error } = useWeather(city);
@@ -18,16 +18,22 @@ function Weather({ city, dayData }) {
         condition: dayData.day.condition.text,
         icon: dayData.day.condition.icon,
         temperature: Math.round(dayData.day.avgtemp_c),
+        maxtemp: Math.round(dayData.day.maxtemp_c),
+        mintemp: Math.round(dayData.day.mintemp_c),
         wind: Math.round(dayData.day.maxwind_kph),
-        humidity: dayData.day.avghumidity
+        rain: dayData.day.daily_chance_of_rain,
+        sunrise: dayData.astro.sunrise,
+        sunset: dayData.astro.sunset,
+        moon: dayData.astro.moon_phase,
       }
     : {
         day: "Aujourd'hui",
+        alert: weatherData.alerts.alert,
         condition: weatherData.current.condition.text,
         icon: weatherData.current.condition.icon,
         temperature: weatherData.current.temp_c,
         wind: weatherData.current.wind_kph,
-        humidity: weatherData.current.humidity
+        precipitation: weatherData.current.precip_mm,
       };
 
   return (
@@ -35,12 +41,15 @@ function Weather({ city, dayData }) {
       <div className='card-content'>
         <div>
           <p>{capitalizeFirstLetter(displayData.day)}</p>
+          <p>Le soleil se lève à {displayData.sunrise} et se couche à {displayData.sunset}</p>
+          <p>Phase de la lune <img className="icon" src={moon} alt="icone de lune"/>{displayData.moon}</p>
           <p className="card-title">{weatherData.location.name}</p>
           <p>{translateWeatherCondition(displayData.condition)}</p>
           <p><img src={`https:${displayData.icon}`} alt="Weather icon" /></p>
           <p className="temperature">{displayData.temperature}°C</p>
-          <p className="wind">Vent à {displayData.wind}km/h</p>
-          <p>Humidité : {displayData.humidity}%</p>
+          <p className="wind">Vent maximum à {displayData.wind}km/h</p>
+          <p>Probabilité de pluie : {displayData.rain}%</p>
+          <p>Il pleuvra environ {displayData.precipitation} mm</p>
         </div>
       </div>
     </div>

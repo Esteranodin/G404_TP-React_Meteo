@@ -32,14 +32,56 @@ export function useWeather(city) {
         }
 
         const data = await response.json();
-        
+
         // Mettre en cache les données
         cache[city] = {
           data,
           timestamp: currentTime
         };
-        
-        setWeatherData(data);
+
+        // Créer une variable pour ne garder que les données qui m'intéressent
+        const formattedWeatherData = {
+          alerts: {
+            alert: data.alerts.alert
+          },
+          location: {
+            name: data.location.name,
+            country: data.location.country,
+            localtime: data.location.localtime
+          },
+          current: {
+            temp_c: data.current.temp_c,
+            wind_kph: data.current.wind_kph,
+            precip_mm: data.current.precip_mm,          
+            condition: {
+              text: data.current.condition.text,
+              icon: data.current.condition.icon
+            }
+          },
+          forecast: data.forecast.forecastday.map((day) => ({
+            date: day.date,
+            astro: {
+              sunrise: day.astro.sunrise,
+              sunset: day.astro.sunset, 
+              moon_phase: day.astro.moon_phase
+            },
+            day: {
+              avgtemp_c: day.day.avgtemp_c,
+              daily_chance_of_rain: day.day.daily_chance_of_rain,
+              maxtemp_c: day.day.maxtemp_c,
+              mintemp_c: day.day.mintemp_c,
+              maxwind_kph: day.day.maxwind_kph,
+              condition: {
+                text: day.day.condition.text,
+                icon: day.day.condition.icon,
+              }
+            }
+          }))
+        };
+
+        // console.log(formattedWeatherData);
+                
+        setWeatherData(formattedWeatherData);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching weather data:', error);

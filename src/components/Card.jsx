@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Days from './Days';
 import Weather from './Weather';
 import SearchBar from './SearchBar';

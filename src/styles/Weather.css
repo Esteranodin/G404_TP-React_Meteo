@@ -14,8 +14,12 @@
 .weather .temperature {
     margin-left:4vh;
     font-size:120px;
-    font-family: 'Roboto', sans-serif;
-    text-shadow: var(--shadow-text);
+}
+
+.icon{
+    width: 7vw;
+    height: 7vh;
+    align-items: center;
 }
 
 .error-message {

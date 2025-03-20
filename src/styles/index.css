@@ -18,4 +18,5 @@
 
 body {
   background: var(--color-bg-main);
+  font-family: 'Roboto', sans-serif;
 }
