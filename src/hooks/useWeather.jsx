@@ -101,7 +101,7 @@ export function useWeather(city, coordinates) {
           }))
         };
 
-        // console.log(formattedWeatherData);
+        console.log(formattedWeatherData);
                 
         setWeatherData(formattedWeatherData);
       } catch (error) {

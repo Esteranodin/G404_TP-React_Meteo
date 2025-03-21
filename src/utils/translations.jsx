@@ -3,7 +3,7 @@ const translations = {
   "Sunny": "Ensoleillé",
   "Clear": "Dégagé",
   "Partly Cloudy ": "Partiellement nuageux",
-  "Cloudy": "Nuageux",
+  "Cloudy ": "Nuageux",
   "Overcast": "Couvert",
   
   // Pluie
