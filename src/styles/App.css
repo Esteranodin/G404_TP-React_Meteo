@@ -25,7 +25,7 @@
   border-radius: 0 !important;
   text-transform: uppercase !important;
   letter-spacing: 2px !important;
-  font-weight: 300 !important;
+  font-weight: 600 !important;
   box-shadow: none !important;
   transition: var(--transition-smooth) !important;
 }
@@ -44,6 +44,8 @@
 .row > div {
   animation: fadeIn 0.4s ease-out; /* 0.6s → 0.4s */
 }
+
+
 
 
 
