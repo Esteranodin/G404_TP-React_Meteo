@@ -1,3 +1,5 @@
+import '../styles/ErrorMessage.css';
+
 function ErrorMessage({ error, className = "red-text", onDismiss }) {
   if (!error) return null;
   

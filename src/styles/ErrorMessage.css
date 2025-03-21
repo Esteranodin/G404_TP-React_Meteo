@@ -1,0 +1,31 @@
+.error-message {
+  color: var(--color-font-error);
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 8px;
+  background-color: var(--color-bg-header);
+  border-radius: 4px;
+  position: relative;
+}
+
+/* Style pour le bouton de fermeture */
+.error-message .btn-flat {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  padding: 0 6px;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+
+.error-message.warning {
+  background-color: var(--color-warning, #fff3cd);
+  color: var(--color-warning-text, #856404);
+}
+
+.error-message.critical {
+  background-color: var(--color-critical, #f8d7da);
+  color: var(--color-critical-text, #721c24);
+}

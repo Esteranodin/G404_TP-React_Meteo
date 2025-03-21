@@ -66,9 +66,6 @@ export function useWeather(city, coordinates) {
 
         // Créer une variable pour ne garder que les données qui m'intéressent
         const formattedWeatherData = {
-          alerts: {
-            alert: data.alerts.alert
-          },
           location: {
             name: data.location.name,
             country: data.location.country,

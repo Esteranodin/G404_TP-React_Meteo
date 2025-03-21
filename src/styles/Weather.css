@@ -1,32 +1,72 @@
 .weather.card {
-    margin-top:4vh;
+  margin-top: 40px;
+  border: none;
+  background-color: var(--color-card-content) !important;
 }
 
 .weather.card .card-content {
-    background: var(--color-card-content);
-    color: var(--color-font);
-}
-
-.weather.card .card-action {
-    background: var(--color-card-action);
+  background: var(--color-card-content);
+  color: var(--color-font);
+  padding: 40px 30px;
+  text-align: center;
 }
 
 .weather .temperature {
-    margin-left:4vh;
-    font-size:120px;
+  font-family: 'Playfair Display', serif;
+  font-size: 120px;
+  margin: 30px 0;
+  line-height: 1;
+  font-weight: 300;
+  background: linear-gradient(45deg, var(--color-primary), #d4af37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.icon{
-    width: 7vw;
-    height: 7vh;
-    align-items: center;
+.weather .card-title {
+  font-size: 2.5rem;
+  margin: 25px 0 15px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-.error-message {
-    color: var(--color-font-error);
-    font-weight: bold;
-    margin-top: 10px;
-    padding: 8px;
-    background-color: var(--color-bg-header);
-    border-radius: 4px;
-  }
+.icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+.weather p {
+  margin: 12px 0;
+  color: var(--color-font-light);
+}
+
+.weather .condition-text {
+  font-size: 1.4rem;
+  color: var(--color-font);
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+.weather .astro-info {
+  display: flex;
+  justify-content: space-around;
+  margin: 25px 0;
+}
+
+.weather .astro-item {
+  text-align: center;
+}
+
+.weather .astro-value {
+  font-weight: 600;
+  color: var(--color-font);
+}
+
+.weather .astro-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

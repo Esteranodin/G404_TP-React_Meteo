@@ -1,5 +1,5 @@
 import { useWeather } from '../hooks/useWeather';
-import { getDayOfWeek } from '../utils/date';
+import { getDayOfWeek } from '../utils/datetime';
 import { useError } from '../contexts/ErrorContext';
 import '../styles/Days.css';
 

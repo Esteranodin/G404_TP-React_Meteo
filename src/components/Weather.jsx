@@ -1,6 +1,6 @@
 import { useWeather } from '../hooks/useWeather';
 import { translateWeatherCondition } from '../utils/translations';
-import { getDayOfWeek, capitalizeFirstLetter } from '../utils/date';
+import { getDayOfWeek, capitalizeFirstLetter, convertTo24HourFormat } from '../utils/datetime';
 import { useError } from '../contexts/ErrorContext';
 import moon from '../assets/moon.svg';
 import '../styles/Weather.css';
@@ -13,6 +13,12 @@ function Weather({ city, coordinates, dayData }) {
   if (loading) return <div className='error-message'>Chargement des données météo...</div>;
   if (error) return <div className='error-message'>{error}</div>;
   if (!weatherData) return <div className='error-message'>Aucune donnée disponible</div>;
+
+  // Pour récupérer les données pour aujourd'hui dans celles des prévisions (current -> forecast)
+  const todayForecast = weatherData.forecast && weatherData.forecast.length > 0 
+    ? weatherData.forecast.find(day => 
+        new Date(day.date).toDateString() === new Date().toDateString())
+    : null;
 
   // Données à afficher = jour sélectionné ou aujourd'hui
   const displayData = dayData 
@@ -31,29 +37,56 @@ function Weather({ city, coordinates, dayData }) {
       }
     : {
         day: "Aujourd'hui",
-        alert: weatherData.alerts.alert,
         condition: weatherData.current.condition.text,
         icon: weatherData.current.condition.icon,
-        temperature: weatherData.current.temp_c,
+        temperature: Math.round(weatherData.current.temp_c),
         wind: weatherData.current.wind_kph,
-        precipitation: weatherData.current.precip_mm,
+        sunrise: todayForecast?.astro?.sunrise,
+        sunset: todayForecast?.astro?.sunset,
+        moon: todayForecast?.astro?.moon_phase,
+        rain: todayForecast?.day?.daily_chance_of_rain,
       };
 
+
   return (
-    <div className='weather card blue-grey darken-1'>
+    <div className='weather card'>
       <div className='card-content'>
-        <div>
-          <p>{capitalizeFirstLetter(displayData.day)}</p>
-          <p>Le soleil se lève à {displayData.sunrise} et se couche à {displayData.sunset}</p>
-          <p><img className="icon" src={moon} alt="icone de lune"/>{translateWeatherCondition(displayData.moon)}</p>
-          <p className="card-title">{weatherData.location.name}</p>
-          <p>{translateWeatherCondition(displayData.condition)}</p>
-          <p><img src={`https:${displayData.icon}`} alt="Weather icon" /></p>
-          <p className="temperature">{displayData.temperature}°C</p>
-          <p>Vent maximum à {displayData.wind}km/h</p>
-          <p>Probabilité de pluie : {displayData.rain}%</p>
-          <p>Il pleuvra environ {displayData.precipitation} mm</p>
+        <p className="day-label">{capitalizeFirstLetter(displayData.day)}</p>
+        
+        <h2 className="card-title">{weatherData.location.name}</h2>
+        
+        <p className="condition-text">{translateWeatherCondition(displayData.condition)}</p>
+        <p><img src={`https:${displayData.icon}`} alt="Weather icon" /></p>
+        
+        <p className="temperature">{displayData.temperature}°C</p>
+        
+        <div className="astro-info">
+          {displayData.sunrise && displayData.sunset && (
+            <>
+              <div className="astro-item">
+                <div className="astro-value">{convertTo24HourFormat(displayData.sunrise)}</div>
+                <div className="astro-label">Lever</div>
+              </div>
+              <div className="astro-item">
+                <div className="astro-value">{convertTo24HourFormat(displayData.sunset)}</div>
+                <div className="astro-label">Coucher</div>
+              </div>
+            </>
+          )}
         </div>
+        
+        {displayData.moon && (
+          <p><img className="icon" src={moon} alt="icone de lune"/>{translateWeatherCondition(displayData.moon)}</p>
+        )}
+        
+        <div className="weather-details">
+          <p>Vent: {displayData.wind} km/h</p>
+          {displayData.rain !== undefined && (
+            <p>Probabilité de pluie: {displayData.rain}%</p>
+          )}
+        </div>
+        
+
       </div>
     </div>
   );

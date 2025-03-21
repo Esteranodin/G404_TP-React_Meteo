@@ -1,73 +1,100 @@
 .days-container {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  gap: 10px;
+  flex-wrap: nowrap;
+  margin: 40px 0;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 5px 0;
 }
 
 .day-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px;
-  background-color: var(--color-font);
-  border-radius: 8px;
-  width: calc(20% - 10px);
-  box-shadow: var(--shadow-day-card);
+  padding: 20px 15px;
+  background-color: var(--color-card-content);
+  border-radius: 2px;
+  flex: 1;
   min-width: 100px;
-  transition: transform 0.2s ease;
+  box-shadow: var(--shadow-day-card);
+  transition: var(--transition-smooth);
+  border: 1px solid rgba(0,0,0,0.03);
 }
 
 .day-card:hover {
   transform: translateY(-5px);
+  box-shadow: var(--shadow-today-card);
+  border-color: rgba(0,0,0,0.08);
 }
 
 .day-name {
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-weight: 500;
+  margin-bottom: 15px;
   text-transform: capitalize;
+  letter-spacing: 1px;
+  font-size: 0.9em;
+  color: var(--color-font-light);
 }
 
 .day-icon {
-  width: 50px;
-  height: 50px;
-  margin: 5px 0;
+  width: 45px;
+  height: 45px;
+  margin: 10px 0;
+  filter: saturate(1.2);
 }
 
 .day-temps {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 8px;
+  margin-top: 15px;
+  font-family: 'Playfair Display', serif;
 }
 
 .temp-max {
-  font-weight:600;
+  font-weight: 600;
   color: var(--color-temp-max);
+  margin-right: 10px;
 }
 
 .temp-min {
-  font-weight:500;
+  font-weight: 400;
   color: var(--color-temp-min);
 }
 
 .day-card.today {
   background-color: var(--color-bg-today);
   border: 1px solid var(--color-primary);
-  box-shadow: var(--shadow-today-card);
+  position: relative;
+}
+
+.day-card.today::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 1px;
+  background-color: var(--color-primary);
 }
 
 .day-card.today .day-name {
   color: var(--color-primary);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* -------------- Responsive -------------- */
 @media (max-width: 768px) {
+  .days-container {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 15px;
+  }
+  
   .day-card {
-    width: calc(33.33% - 10px);
-    margin-bottom: 10px;
+    min-width: 110px;
   }
 }
 
