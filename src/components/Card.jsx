@@ -11,11 +11,11 @@ function Card() {
   const { weatherData } = useWeather(city, coordinates);
 
   useEffect(() => {
-    if (weatherData && weatherData.forecast && !selectedDay) {
-      // Sélection premier jour disponible = aujourd'hui
+    if (weatherData && weatherData.forecast && weatherData.forecast.length > 0) {
+      // Sélection premier jour dispo = aujourd'hui
       setSelectedDay(weatherData.forecast[0]);
     }
-  }, [weatherData, selectedDay]);
+  }, [weatherData]);
 
   const handleDaySelect = useCallback((day) => {
     setSelectedDay(day);
