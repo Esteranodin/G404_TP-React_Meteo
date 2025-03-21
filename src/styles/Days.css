@@ -3,9 +3,9 @@
   justify-content: space-between;
   flex-wrap: nowrap;
   margin: 40px 0;
-  gap: 15px;
+  gap: 10px;
   overflow-x: auto;
-  padding: 5px 0;
+  padding: 5px 0 20px;
 }
 
 .day-card {
@@ -59,17 +59,17 @@
 }
 
 .temp-min {
-  font-weight: 400;
+  font-weight: 600;
   color: var(--color-temp-min);
 }
 
-.day-card.today {
+.day-card.selected {
   background-color: var(--color-bg-today);
   border: 1px solid var(--color-primary);
   position: relative;
 }
 
-.day-card.today::before {
+.day-card.selected::before {
   content: '';
   position: absolute;
   top: 8px;
@@ -80,10 +80,11 @@
   background-color: var(--color-primary);
 }
 
-.day-card.today .day-name {
+.day-card.selected .day-name {
   color: var(--color-primary);
   font-weight: 600;
 }
+
 
 /* -------------- Responsive -------------- */
 @media (max-width: 768px) {

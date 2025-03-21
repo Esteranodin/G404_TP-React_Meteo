@@ -19,3 +19,6 @@
 
 2. Renseigner votre API Key, par exemple en utilisant ce lien :  [https://www.weatherapi.com] (https://www.weatherapi.com)
 
+# Améliorations possibles :
+
+* Villes en historique = en mémoire entre deux rechargements de page / localStorage  FAVORIS ?

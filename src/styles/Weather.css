@@ -1,13 +1,12 @@
 .weather.card {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   border: none;
-  background-color: var(--color-card-content) !important;
+  background-color: var(--color-card-content) ;
 }
 
 .weather.card .card-content {
   background: var(--color-card-content);
   color: var(--color-font);
-  padding: 40px 30px;
   text-align: center;
 }
 
@@ -34,7 +33,7 @@
 .icon {
   width: 50px;
   height: 50px;
-  margin: 0 10px;
+  margin: 10px;
   vertical-align: middle;
 }
 
@@ -54,6 +53,7 @@
   display: flex;
   justify-content: space-around;
   margin: 25px 0;
+  align-items: center;
 }
 
 .weather .astro-item {

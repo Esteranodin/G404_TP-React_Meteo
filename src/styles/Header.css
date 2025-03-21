@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: flex-start;
   box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-  padding: 5px 20px; 
+  padding: 0 20px; 
   position: fixed;
   top: 0;
   left: 0;
@@ -24,7 +24,7 @@
 }
 
 .logo {
-  height: 70px; 
+  height: 100px; 
   transition: var(--transition-smooth);
   filter: saturate(0.9) contrast(1.1);
 }

@@ -19,7 +19,6 @@ function SearchBar({ onCityChange, onCoordinatesChange }) {
       return;
     }
 
-    // Si tout est valide, effacer les erreurs
     setError(null);
 
     onCityChange(inputCity.trim());
@@ -44,36 +43,26 @@ function SearchBar({ onCityChange, onCoordinatesChange }) {
 
   const handleInputChange = (e) => {
     setInputCity(e.target.value);
-    // Effacer les erreurs dès que l'utilisateur commence à taper
+
     if (error) setError(null);
   };
 
   return (
     <div className="search-container">
-      <form onSubmit={handleSubmit}>
-        <div className="input-field">
-          <input
-            type="text"
-            value={inputCity}
-            onChange={handleInputChange}
-            placeholder="Entrez une ville"
-          />
-        </div>
-      </form>
-
-      <div className="buttons-container">
-        <button type="submit" onClick={handleSubmit} className="btn">
+      <input 
+        type="text" 
+        placeholder="Entrez une ville..."
+        value={inputCity}
+        onChange={handleInputChange}
+      />
+      <div>
+        <button className="search-button" onClick={handleSubmit}>
           Rechercher
         </button>
-        <button
-          onClick={handleLocationRequest}
-          disabled={isLoading}
-          className="btn waves-effect waves-light"
-        >
+        <button className="locate-button" onClick={handleLocationRequest} disabled={isLoading}>
           {isLoading ? 'Localisation...' : 'Me localiser'}
         </button>
       </div>
-
       <ErrorMessage error={error} />
     </div>
   );

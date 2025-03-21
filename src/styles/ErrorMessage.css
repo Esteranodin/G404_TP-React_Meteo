@@ -8,7 +8,6 @@
   position: relative;
 }
 
-/* Style pour le bouton de fermeture */
 .error-message .btn-flat {
   position: absolute;
   top: 50%;
@@ -19,13 +18,3 @@
   line-height: 1;
 }
 
-
-.error-message.warning {
-  background-color: var(--color-warning, #fff3cd);
-  color: var(--color-warning-text, #856404);
-}
-
-.error-message.critical {
-  background-color: var(--color-critical, #f8d7da);
-  color: var(--color-critical-text, #721c24);
-}

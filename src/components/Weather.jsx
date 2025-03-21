@@ -3,6 +3,7 @@ import { translateWeatherCondition } from '../utils/translations';
 import { getDayOfWeek, capitalizeFirstLetter, convertTo24HourFormat } from '../utils/datetime';
 import { useError } from '../contexts/ErrorContext';
 import moon from '../assets/moon.svg';
+import sun from '../assets/sun.svg';
 import '../styles/Weather.css';
 
 function Weather({ city, coordinates, dayData }) {
@@ -51,7 +52,7 @@ function Weather({ city, coordinates, dayData }) {
   return (
     <div className='weather card'>
       <div className='card-content'>
-        <p className="day-label">{capitalizeFirstLetter(displayData.day)}</p>
+        <p>{capitalizeFirstLetter(displayData.day)}</p>
 
         <div className="astro-info">
           {displayData.sunrise && displayData.sunset && (
@@ -60,6 +61,7 @@ function Weather({ city, coordinates, dayData }) {
                 <div className="astro-value">{convertTo24HourFormat(displayData.sunrise)}</div>
                 <div className="astro-label">Lever</div>
               </div>
+              <div><img src={sun} alt="icone lune" /></div>
               <div className="astro-item">
                 <div className="astro-value">{convertTo24HourFormat(displayData.sunset)}</div>
                 <div className="astro-label">Coucher</div>
@@ -74,7 +76,7 @@ function Weather({ city, coordinates, dayData }) {
 
         <p className="temperature">{displayData.temperature}°C</p>
 
-        <div className="weather-details">
+        <div>
           <p>Vent: {displayData.wind} km/h</p>
           {displayData.rain !== undefined && (
             <p>Probabilité de pluie: {displayData.rain}%</p>
@@ -82,7 +84,8 @@ function Weather({ city, coordinates, dayData }) {
         </div>
 
         {displayData.moon && (
-          <p><img className="icon" src={moon} alt="icone de lune" />{translateWeatherCondition(displayData.moon)}</p>
+          <><img className="icon" src={moon} alt="icone de lune" />
+          <p>{translateWeatherCondition(displayData.moon)}</p></>
         )}
       </div>
     </div>

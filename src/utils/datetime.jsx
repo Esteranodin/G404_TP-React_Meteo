@@ -12,7 +12,6 @@ export const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-// Conversion du format 12h (AM/PM) en format 24h
 export const convertTo24HourFormat = (timeStr) => {
   if (!timeStr) return '';
   

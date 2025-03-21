@@ -3,7 +3,7 @@ import { getDayOfWeek } from '../utils/datetime';
 import { useError } from '../contexts/ErrorContext';
 import '../styles/Days.css';
 
-function Days({ city, coordinates, onDaySelect }) {
+function Days({ city, coordinates, onDaySelect, selectedDay }) {
   const { weatherData, loading } = useWeather(city, coordinates);
   const { errors } = useError();
   const hasError = errors['weather-api']; 
@@ -32,12 +32,12 @@ function Days({ city, coordinates, onDaySelect }) {
   return (
     <div className="days-container">
       {forecastDays.map((day) => {
-        const isToday = new Date(day.date).toDateString() === new Date().toDateString();
+        const isSelected = selectedDay && day.date === selectedDay.date;
 
         return (
           <div
             key={day.date}
-            className={`day-card ${isToday ? 'today' : ''}`}
+            className={`day-card ${isSelected ? 'selected' : ''}`}
             onClick={() => onDaySelect && onDaySelect(day)}
             style={{ cursor: 'pointer' }}
           >

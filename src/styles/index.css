@@ -3,25 +3,20 @@
   --color-bg-header: #ffffff;
   --color-bg-today: rgba(235, 235, 235, 0.5);
   --color-card-content: #ffffff;
-  --color-card-action: #f0f0f0;
-  --color-primary: #b8860b; 
+  --color-primary: #b8860b;
   --color-font: #222222;
   --color-font-light: #525151;
   --color-font-error: #9e2b25;
-  --color-temp-max: #c04b31;
-  --color-temp-min: #3a6ea5;
-  
+  --color-temp-max: #b4371b;
+  --color-temp-min: #0e3f73;
+
   /* Ombres */
   --shadow-text: none;
-  --shadow-day-card: 0 4px 15px rgba(0,0,0,0.05);
-  --shadow-today-card: 0 6px 20px rgba(0,0,0,0.07);
-  
+  --shadow-day-card: 0 4px 15px rgba(0, 0, 0, 0.05);
+  --shadow-today-card: 0 6px 20px rgba(0, 0, 0, 0.07);
+
   /* Transitions */
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-  /* Breakpoints */
-  --breakpoint-mobile: 480px;
-  --breakpoint-tablet: 768px;
 }
 
 body {
@@ -32,23 +27,28 @@ body {
   color: var(--color-font);
   letter-spacing: 0.02em;
   line-height: 1.6;
-  font-size: 15px; 
-  line-height: 1.4; 
+  font-size: 15px;
+  line-height: 1.4;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
   letter-spacing: 0.03em;
   margin-top: 0.5em;
-  margin-bottom: 0.5em; 
+  margin-bottom: 0.5em;
 }
 
 input {
-  border-radius: 0 !important;
-  font-family: 'Montserrat', sans-serif !important;
+  border-radius: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 p {
-  margin-bottom: 0.75em; 
+  margin-bottom: 0.75em;
 }

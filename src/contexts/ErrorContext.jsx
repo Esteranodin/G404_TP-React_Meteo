@@ -1,6 +1,5 @@
 import { createContext, useContext, useState } from 'react';
 
-// Valeur par défaut du contexte
 const defaultValue = {
   errors: {},
   setError: () => {},
@@ -32,7 +31,7 @@ export function ErrorProvider({ children }) {
     setErrors({});
   };
 
-  // Simplification importante : ne pas inclure le rendu des erreurs dans le Provider lui-même
+  // Pas inclure le rendu des erreurs dans le Provider lui-même
   return (
     <ErrorContext.Provider 
       value={{
